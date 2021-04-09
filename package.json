@@ -1,22 +1,39 @@
 {
-  "name": "with-typescript",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "type-check": "tsc"
-  },
-  "dependencies": {
-    "next": "latest",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
-  "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1",
-    "typescript": "4.0"
-  },
-  "license": "MIT"
+	"name": "with-typescript",
+	"version": "1.0.0",
+	"config": {
+		"firebaseToken": "1//0e1bic79sUpioCgYIARAAGA4SNwF-L9Irf58Pw84tp5ymttAFcW-OAlZfGNKKA_uIn5yrGJnBLoEtmTwQuPoZrX_aYE_mOZrI4WI"
+	},
+	"scripts": {
+		"dev": "next",
+		"start": "next start",
+		"type-check": "tsc",
+		"build": "ENV=development next build && next export",
+		"build-stg": "ENV=staging next build && next export",
+		"build-prod": "ENV=production next build && next export",
+		"fire-use-dev": "firebase use bocchi-one --token $npm_package_config_firebaseToken",
+		"fire-use-stg": "firebase use bocchi-one --token $npm_package_config_firebaseToken",
+		"fire-use-prod": "firebase use bocchi-one --token $npm_package_config_firebaseToken",
+		"fire-deploy-dev": "firebase deploy --only hosting:bocchi-one --token $npm_package_config_firebaseToken",
+		"fire-deploy-stg": "firebase deploy --only hosting:bocchi-one --token $npm_package_config_firebaseToken",
+		"fire-deploy-prod": "firebase deploy --only hosting:bocchi-one --token $npm_package_config_firebaseToken",
+		"fire-build-deploy-dev": "npm run fire-use-dev && npm run build && npm run fire-deploy-dev",
+		"fire-build-deploy-stg": "npm run fire-use-stg && npm run build-stg && npm run fire-deploy-stg",
+		"fire-build-deploy-prod": "npm run fire-use-prod && npm run build-prod && npm run fire-deploy-prod",
+		"fire-build-deploy-all": "npm run fire-build-deploy-dev && npm run fire-build-deploy-stg && npm run fire-build-deploy-prod"
+	},
+	"dependencies": {
+		"firebase": "^8.3.3",
+		"next": "latest",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"sass": "^1.32.8"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.21",
+		"@types/react": "^17.0.2",
+		"@types/react-dom": "^17.0.1",
+		"typescript": "4.0"
+	},
+	"license": "MIT"
 }

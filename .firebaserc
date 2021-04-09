@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "bocchi-one"
+  },
+  "targets": {
+    "bocchi-one": {
+      "hosting": {
+        "bocchi-one": [
+          "bocchi-one"
+        ]
+      }
+    }
+  }
+}

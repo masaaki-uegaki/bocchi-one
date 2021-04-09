@@ -1,0 +1,61 @@
+{
+	"firestore": {
+		"rules": "firestore.rules",
+		"indexes": "firestore.indexes.json"
+	},
+	"hosting": [
+		{
+			"public": "out",
+			"target": "bocchi-one",
+			"ignore": [
+				"firebase.json",
+				"**/.*",
+				"**/node_modules/**"
+			],
+			"headers": [
+				{
+					"source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+					"headers": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					]
+				},
+				{
+					"source": "**/*.@(jpg|jpeg|gif|png|svg|pdf|html|ico|swf|inc|mp4|ttf|woff|webp)",
+					"headers": [
+						{
+							"key": "Cache-Control",
+							"value": "max-age=31536000"
+						}
+					]
+				},
+				{
+					"source": "**/*.@(js|css)",
+					"headers": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						}
+					]
+				}
+			],
+			"rewrites": [
+				{
+					"source": "**",
+					"destination": "/index.html"
+				}
+			],
+			"cleanUrls": true,
+			"trailingSlash": false,
+			"redirects": []
+		}
+	],
+	"storage": {
+		"rules": "storage.rules"
+	},
+	"functions": {
+		"predeploy": []
+	}
+}
